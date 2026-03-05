@@ -42,9 +42,6 @@ public class AIPlayer implements PlayerLogic {
     private final MoveParser parser;
     private final ExecutorService executor;
 
-    /**
-     * Full constructor — inject all collaborators.
-     */
     public AIPlayer(ChatModel model, TicTacToePrompt prompt, MoveParser parser) {
         this.model = Objects.requireNonNull(model);
         this.prompt = Objects.requireNonNull(prompt);
@@ -52,9 +49,6 @@ public class AIPlayer implements PlayerLogic {
         this.executor = Executors.newVirtualThreadPerTaskExecutor();
     }
 
-    /**
-     * Convenience constructor — defaults to Gson-based prompt and parser.
-     */
     public AIPlayer(ChatModel model, Player aiPlayer) {
         this(model, new JsonMovePrompt(aiPlayer), new GsonMoveParser());
     }

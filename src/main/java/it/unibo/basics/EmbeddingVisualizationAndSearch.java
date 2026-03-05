@@ -4,8 +4,8 @@ import it.unibo.utils.LlmConstants;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.ollama.OllamaEmbeddingModel;
 import it.unibo.utils.Vector;
+import smile.manifold.TSNE;
 import smile.plot.swing.ScatterPlot;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
@@ -22,7 +22,9 @@ public class EmbeddingVisualizationAndSearch {
         List<String> datasetFromResource;
         try {
             datasetFromResource = Files.readAllLines(Path.of(
-                Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("dataset.txt")).toURI()
+                Objects.requireNonNull(
+                    Thread.currentThread().getContextClassLoader().getResource("dataset.txt")
+                ).toURI()
             ));
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException("Failed to read dataset", e);
@@ -49,7 +51,7 @@ public class EmbeddingVisualizationAndSearch {
         // Visualization with t-SNE
         final double[][] allEmbeddings = Stream.concat(Stream.of(questionOnSpace, questionOnAnime), datasetEmbeddings.stream())
             .map(Vector::getData).toArray(double[][]::new);
-        final var tsneFlatten = smile.manifold.TSNE.fit(allEmbeddings);
+        final var tsneFlatten = TSNE.fit(allEmbeddings);
         final int[] labels = Stream.concat(Stream.of(1, 2), Stream.generate(() -> 0).limit(datasetEmbeddings.size()))
             .mapToInt(Integer::intValue).toArray();
         final var plot = ScatterPlot.of(tsneFlatten.coordinates(), labels, 'x');
