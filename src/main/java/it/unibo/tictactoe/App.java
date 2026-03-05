@@ -21,12 +21,12 @@ public class App {
     public static void main(String[] args) {
         ChatModel chatModel = OllamaChatModel.builder()
             .baseUrl(LlmConstants.OLLAMA_BASE_URL)
-            .modelName(LlmConstants.CHAT_MODEL_SMOLLM)
+            .modelName(LlmConstants.CHAT_MODEL_QWEN)
             .temperature(AIPlayer.RECOMMENDED_TEMPERATURE)
             .build();
         ChatModel chatModelWithGemini = GoogleAiGeminiChatModel.builder()
             .apiKey(System.getenv("GEMINI_AI_KEY"))
-            .modelName("gemini-2.5-flash")
+            .modelName("gemini-3.1-flash-lite-preview")
             .build();
         TicTacToe game = new TicTacToeImpl();
         UserPlayer humanPlayer = new UserPlayer();

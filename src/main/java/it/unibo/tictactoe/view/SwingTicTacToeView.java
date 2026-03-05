@@ -109,8 +109,8 @@ public final class SwingTicTacToeView implements TicTacToeView, BoardView {
     private void initializeFrame() {
         JPanel panel = new JPanel(new GridLayout(BOARD_SIZE, BOARD_SIZE));
         buttons.stream()
-                .flatMap(Collection::stream)
-                .forEach(panel::add);
+            .flatMap(Collection::stream)
+            .forEach(panel::add);
         frame.add(panel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();

@@ -24,7 +24,7 @@ ollama pull smollm2:135m
 ollama pull mxbai-embed-large
 
 # Good performing SLM model
-ollama pull qwen3:0.6b
+ollama pull qwen3.5:0.8b
 ```
 
 To check the available models, run:
@@ -40,7 +40,7 @@ For this primer, we'll use:
 - `smollm2:135m` - a small LLM model
 - `mxbai-embed-large` - a large embedding model
 - `qwen3:0.6b` - as a good performing SLM model
-- A recent model from google (gemini or gemma) as gold reference.
+- A recent model from google (gemini or gemma) as gold reference (please get the gemini api from here: https://aistudio.google.com/api-keys)
 
 
 Feel free to experiment with other models to compare performance.

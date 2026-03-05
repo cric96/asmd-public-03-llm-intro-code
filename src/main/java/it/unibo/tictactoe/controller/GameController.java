@@ -17,7 +17,6 @@ import java.util.function.Consumer;
  * The game loop runs on a virtual thread to avoid blocking the UI.
  */
 public class GameController {
-
     private final TicTacToe game;
     private final Map<Player, PlayerLogic> players;
     private final TicTacToeView view;
